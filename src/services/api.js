@@ -1,35 +1,45 @@
+import { getURL } from '../common/utils';
+
+const informationtUrl = 'https://eatgo-customer-api.ahastudio.com/';
+
+const loginUrl = 'https://eatgo-login-api.ahastudio.com/';
+
+const getItemURL = getURL(informationtUrl);
+
+const getSesstionURL = getURL(loginUrl);
+
+
 export async function fetchRegions() {
-  const url = 'https://eatgo-customer-api.ahastudio.com/regions';
+  const url = getItemURL('regions');
   const response = await fetch(url);
   const data = await response.json();
   return data;
 }
 
 export async function fetchCategories() {
-  const url = 'https://eatgo-customer-api.ahastudio.com/categories';
+  const url = getItemURL('categories');
   const response = await fetch(url);
   const data = await response.json();
   return data;
 }
 
 export async function fetchRestaurants({ regionName, categoryId }) {
-  const url = 'https://eatgo-customer-api.ahastudio.com/restaurants'
-    + `?region=${regionName}&category=${categoryId}`;
+  const params = `?region=${regionName}&category=${categoryId}`;
+  const url = getItemURL(`restaurants${params}`);
   const response = await fetch(url);
   const data = await response.json();
   return data;
 }
 
 export async function fetchRestaurant({ restaurantId }) {
-  const url = 'https://eatgo-customer-api.ahastudio.com'
-    + `/restaurants/${restaurantId}`;
+  const url = getItemURL(`restaurants/${restaurantId}`);
   const response = await fetch(url);
   const data = await response.json();
   return data;
 }
 
 export async function postLogin({ email, password }) {
-  const url = 'https://eatgo-login-api.ahastudio.com/session';
+  const url = getSesstionURL('session');
   const response = await fetch(url, {
     method: 'POST',
     headers: {
@@ -44,8 +54,7 @@ export async function postLogin({ email, password }) {
 export async function postReview({
   accessToken, restaurantId, score, description,
 }) {
-  const url = 'https://eatgo-customer-api.ahastudio.com'
-    + `/restaurants/${restaurantId}/reviews`;
+  const url = getItemURL(`restaurants/${restaurantId}/reviews`);
 
   const response = await fetch(url, {
     method: 'POST',
