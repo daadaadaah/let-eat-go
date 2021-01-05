@@ -7,4 +7,4 @@
 
 | No  |  Skill   |             Description              | PR  |
 | :-: | :------: | :----------------------------------: | :-: |
-|  1  | Currying | 서버와 통신 로직에 currying 적용하기 |  -  |
+|  1  | Currying | 서버와 통신 로직에 currying 적용하기 | [#2](https://github.com/daadaadaah/let-eat-go/pull/2) |
