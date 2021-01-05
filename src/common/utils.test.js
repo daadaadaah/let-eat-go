@@ -1,4 +1,4 @@
-import { get, equal } from './utils';
+import { get, equal, getURL } from './utils';
 
 test('get', () => {
   const state = {
@@ -22,4 +22,11 @@ test('equal', () => {
 
   expect(f(state)).toBeTruthy();
   expect(g(state)).toBeFalsy();
+});
+
+test('getURL', () => {
+  const basetUrl = 'https://www.example.com/';
+  const url = getURL(basetUrl)('item');
+
+  expect(url).toBe('https://www.example.com/item');
 });
